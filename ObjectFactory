@@ -1,0 +1,31 @@
+using System;
+using System.Threading;
+using StructureMap;
+
+namespace EfSamples.IocConfig
+{
+    public class ProjectObjectFactory
+    {
+        private static readonly Lazy<Container> ContainerBuilder =
+            new Lazy<Container>(DefaultContainer, LazyThreadSafetyMode.ExecutionAndPublication);
+
+        public static IContainer Container => ContainerBuilder.Value;
+
+        private static Container DefaultContainer()
+        {
+            var container = new Container(x =>
+            {
+                //x.For<IEmailsService>().Use<EmailsService>();
+                //x.For<IUsersService>().Singleton().Use<UsersService>();
+                //x.Scan(scan =>
+                //{
+                //    scan.AssemblyContainingType<IEmailService>();
+                //    scan.WithDefaultConventions();
+                //});
+            });
+            container.AssertConfigurationIsValid();
+
+            return container;
+        }
+    }
+}
