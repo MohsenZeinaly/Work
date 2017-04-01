@@ -15,6 +15,7 @@ namespace EfSamples.IocConfig
         {
             var container = new Container(x =>
             {
+            
                 //x.For<IEmailsService>().Use<EmailsService>();
                 //x.For<IUsersService>().Singleton().Use<UsersService>();
                 //x.Scan(scan =>
